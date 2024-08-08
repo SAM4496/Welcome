@@ -1,33 +1,33 @@
-# Gradle files
-.gradle/
-build/
+import turtle
+import time
 
-# Local configuration file (sdk path, etc)
-local.properties
+# Set up the turtle screen
+screen = turtle.Screen()
+screen.bgcolor("lightgreen")
 
-# Log/OS Files
-*.log
+# Set up the turtle for drawing
+pen = turtle.Turtle()
+pen.speed(1)  # Control the drawing speed
+pen.color("Blue")
+pen.pensize(3)
 
-# Android Studio generated files and folders
-captures/
-.externalNativeBuild/
-.cxx/
-*.apk
-output.json
+# Function to write the message with a handwriting effect
+def draw_handwriting(message):
+    for letter in message:
+        pen.write(letter, move=True, font=("Comic Sans MS", 48, "normal"))
+        pen.penup()
+        pen.forward(20)  # Move a bit forward between letters
+        pen.pendown()
+        time.sleep(0.2)  # Delay to create animation effect
 
-# IntelliJ
-*.iml
-.idea/
-misc.xml
-deploymentTargetDropDown.xml
-render.experimental.xml
+# Start position for the message
+pen.penup()
+pen.goto(-250, 0)  # Adjust to center the text
+pen.pendown()
 
-# Keystore files
-*.jks
-*.keystore
+# Draw the message
+draw_handwriting("Welcome Back Babyyy :)")
 
-# Google Services (e.g. APIs or Firebase)
-google-services.json
-
-# Android Profiling
-*.hprof
+# Hide the turtle and finish
+pen.hideturtle()
+screen.mainloop()
